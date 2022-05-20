@@ -10,6 +10,7 @@ import {GithubProvider} from './context/github/GithubContext'
 
 function App() {
   return (
+    // GithubProvider - огортає Весь готовий додаток та передає результат роботи в UserResults
     <GithubProvider>
       <Router>
         <div className="flex flex-col justify-between h-screen">
@@ -21,14 +22,11 @@ function App() {
               <Route path='/NotFound' element={<NotFound/>}></Route>
               <Route path='/*' element={<NotFound/>}></Route>
             </Routes>
-
           </main>
           <Footer/>
         </div>
       </Router>
-    </GithubProvider>
-
-        
+    </GithubProvider>       
 
   );
 }
