@@ -6,7 +6,7 @@ function UserSearch() {
 	const [text, setText] = useState('')
 
 	// виятгуємо users з контексту , де робили fetch запити
-	const {users} = useContext(GithubContext)
+	const {users, searchUsers} = useContext(GithubContext)
 
 	const handleChange = (e) =>{
 		setText(e.target.value)
@@ -18,6 +18,7 @@ function UserSearch() {
 		if(text === ''){
 			alert('Please enter comething')
 		} else{
+			searchUsers(text)
 			setText('')
 		}
 	}

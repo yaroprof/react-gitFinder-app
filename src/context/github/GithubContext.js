@@ -29,21 +29,26 @@ export const GithubProvider = ({children}) =>{
 	// початкоий стан - ініціалізація стану
 	const [state, dispatch] = useReducer(githubReducer, initialState)
 
-// Get initial users (testing purposes))
-	const fetchUsers = async () =>{
+// Get Search Results 
+	const searchUsers = async (text) =>{
 		setLoading()
-		const response = await fetch(`${GITHUB_URL}/users`, {
+
+		const params = new URLSearchParams({
+			q: text
+		})
+
+		const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {
 			headers: {
 				Authorization: `token ${GITHUB_TOKEN}`,
 			}
 		})
 
-		const data = await response.json()
+		const {items} = await response.json()
 
 	// dispatch - вказує reducer з якими кейсами треба працювати- змінює state/ аналогічно - setState- яка змінює даний стан
 		dispatch({
 			type: 'GET_USERS', // вказує, що будуть відбуватися певні дії
-			payload: data,  // новуий стан
+			payload: items,  // новий стан
 		})
 	}
 
@@ -59,7 +64,7 @@ export const GithubProvider = ({children}) =>{
 		// GithubProvider повертає оновлений state по кожному необхідному полю об'єкта і запускає ф-ю запита fetchUsers
 		users: state.users,
 		loading: state.loading,
-		fetchUsers,
+		searchUsers,
 	}}>
 		{/* children- передбачають додавання та розширення DOM за рахунок необмеженої кількості даних */}
 		{children}
