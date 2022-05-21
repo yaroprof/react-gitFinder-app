@@ -6,7 +6,7 @@ function UserSearch() {
 	const [text, setText] = useState('')
 
 	// виятгуємо users з контексту , де робили fetch запити
-	const {users, searchUsers} = useContext(GithubContext)
+	const {users, searchUsers, clearUsers} = useContext(GithubContext)
 
 	const handleChange = (e) =>{
 		setText(e.target.value)
@@ -46,14 +46,19 @@ function UserSearch() {
 				</form>
 			</div>	
 			
-			{users.length > 0 && 
-				(<div>
-					<button className="btn btn-ghost btn-lg">
-						Clear
-					</button>
-				</div>)}
-			</div>
+			{/* Clear Button  */}
+
+			
+			{users.length > 0 && (
+				<div>
+					<button onClick={clearUsers} className='btn btn-ghost btn-lg'>Clear</button>
+				</div>
+			)}
+				
 		
+				
+			
+		</div>
   )
 }
 

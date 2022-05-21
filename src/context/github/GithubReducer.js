@@ -24,6 +24,11 @@ const githubReducer = (state, action) => {
         loading: true
       }
 
+    case 'CLEAR_USERS':
+      return{
+        ...state,
+        users: []
+      }
 
 // якщо жоден action.type не співпадає , то повертається дефолтний state
     default: 
