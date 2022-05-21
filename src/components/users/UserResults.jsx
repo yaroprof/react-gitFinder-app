@@ -1,5 +1,5 @@
 
-import { useEffect, useContext } from "react"
+import {  useContext } from "react"
 import Spinner from "../layout/Spinner";
 import UserItem from "./UserItem";
 import GithubContext from "../../context/github/GithubContext";
@@ -7,11 +7,11 @@ import GithubContext from "../../context/github/GithubContext";
 // UserResults - акумулює вхідні дані та працює над даними контексту, як збірник-конструктор
 function UserResults() {
 	// за допомогою деструктуризації дістаємо необхідні нам дані : users, loading, fetchUsers з контексту GithubContext і подальша робота з нимим в даному компоненті
-	const {users, loading, fetchUsers} = useContext(GithubContext)
+	const {users, loading} = useContext(GithubContext)
 	// UserResults - викликає fetchUsers за допомогою хука useEffect з контексту GithubContext
-	useEffect (() =>{
-		fetchUsers()
-	}, [])
+	//useEffect (() =>{
+	//	fetchUsers()
+	//}, [])
 	// виконуються нвступні умови- якщо норм- тоді будується DOM, якщо ні- запускається Spinner
 	if(!loading){
 		return (
