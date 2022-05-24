@@ -9,11 +9,11 @@ function About() {
         project is part of the
         <a href='https://www.udemy.com/course/modern-react-front-to-back/'>
           {' '}
-          React Front To Back
+          React 
         </a>{' '}
-        Udemy course by
+        by Yaroslav
         <strong>
-          <a href='https://traversymedia.com'> Brad Traversy</a>
+          <a href='https://traversymedia.com'> Yaroslav</a>
         </strong>
         .
       </p>
