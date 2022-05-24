@@ -52,6 +52,9 @@ export const GithubProvider = ({children}) =>{
 		})
 	}
 
+	// Clear users from state
+	const clearUsers = () => dispatch({type: 'CLEAR_USERS'})
+	
 	// Set Loading
 	const setLoading = () =>{dispatch({
 		type: 'SET_LOADING',
@@ -60,15 +63,18 @@ export const GithubProvider = ({children}) =>{
 	}
 
 // повертаються необхідні нам дані отриманого результату запиту users,		loading та відповідно результат - fetchUsers
-	return <GithubContext.Provider value={{
+	return (
+	<GithubContext.Provider value={{
 		// GithubProvider повертає оновлений state по кожному необхідному полю об'єкта і запускає ф-ю запита fetchUsers
 		users: state.users,
 		loading: state.loading,
 		searchUsers,
+		clearUsers,
 	}}>
 		{/* children- передбачають додавання та розширення DOM за рахунок необмеженої кількості даних */}
 		{children}
 	</GithubContext.Provider>
+	)
 }
 
 export default GithubContext
